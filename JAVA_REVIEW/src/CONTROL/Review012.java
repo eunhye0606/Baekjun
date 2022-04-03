@@ -31,7 +31,115 @@ javastudy(Test044.java)
 
 package CONTROL;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
 public class Review012
 {
-
+	public static void main(String[] args)
+	{
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		do
+		{
+			System.out.println("※ 종료 『.』 입력.");
+			System.out.print("임의의 정수 입력 (1 ~ 3) : ");
+			
+			try
+			{
+				String user = br.readLine();
+				
+				if (user.equals("."))
+					break;
+				else
+				{
+					if (Integer.parseInt(user) < 1 || Integer.parseInt(user) > 3)
+					{
+						System.out.println("입력 가능 범위는 1 ~ 3 입니다.\n");
+					}
+					else
+					{
+						//기본모델
+						/*switch (Integer.parseInt(user))
+						{
+						case 3: System.out.print("♥");
+						case 2: System.out.print("♥");
+						case 1: System.out.print("♥\n");
+						}*/
+						
+						//일반모델
+						switch (Integer.parseInt(user))
+						{
+						case 1: System.out.println("★"); break;
+						case 2: System.out.println("★★"); break;
+						case 3: System.out.println("★★★"); break;
+						}
+					}
+				}
+			} catch (Exception e)
+			{
+				System.out.println(e.toString());
+			}
+			
+		} while (true);
+		System.out.println("프로그램 종료.");
+	}
 }
+//결과출력
+//기본모델
+/*
+※ 종료 『.』 입력.
+임의의 정수 입력 (1 ~ 3) : 0
+입력 가능 범위는 1 ~ 3 입니다.
+
+※ 종료 『.』 입력.
+임의의 정수 입력 (1 ~ 3) : 1
+♥
+※ 종료 『.』 입력.
+임의의 정수 입력 (1 ~ 3) : 2
+♥♥
+※ 종료 『.』 입력.
+임의의 정수 입력 (1 ~ 3) : 3
+♥♥♥
+※ 종료 『.』 입력.
+임의의 정수 입력 (1 ~ 3) : 2
+♥♥
+※ 종료 『.』 입력.
+임의의 정수 입력 (1 ~ 3) : .
+프로그램 종료.
+*/
+
+//일반모델
+/*
+※ 종료 『.』 입력.
+임의의 정수 입력 (1 ~ 3) : 4
+입력 가능 범위는 1 ~ 3 입니다.
+
+※ 종료 『.』 입력.
+임의의 정수 입력 (1 ~ 3) : 1
+★
+※ 종료 『.』 입력.
+임의의 정수 입력 (1 ~ 3) : 2
+★★
+※ 종료 『.』 입력.
+임의의 정수 입력 (1 ~ 3) : 3
+★★★
+※ 종료 『.』 입력.
+임의의 정수 입력 (1 ~ 3) : 2
+★★
+※ 종료 『.』 입력.
+임의의 정수 입력 (1 ~ 3) : .
+프로그램 종료.
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+

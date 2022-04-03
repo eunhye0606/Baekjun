@@ -32,10 +32,122 @@ javastudy(Test041.java)
 // 임의의 알파벳 한 문자 입력 : 1
 // >> 입력 오류 ~!!!
 // 계속하려면 아무 키나...
+//===========================================
+// String타입 → 아스키코드 변환.
+//byte [] arrB = user.getBytes("US-ASCII");
 
 package CONTROL;
 
+import java.util.Scanner;
+
 public class Review011
 {
-
+	public static void main(String[] args)
+	{
+		//모음일 경우만 → 『모음입니다』 출력
+		//+ 자음일 경우는 →『자음입니다』 출력해보자
+		//그 이외의 문자 입력은 『입력 오류: 알파벳을 입력해 주세요』 출력
+		//그리고 계속 문자받고 종료는 『.』 입력
+		
+		// 모음 자음을 구분하기 위해 toLowercase() → String클래스의 메소드
+		//와 아스키코드의 범위를 활용할 것이다.
+		
+		// 즉! 문자열로 받아 getBytes()로 아스키문자코드를 추출한다.
+		
+		//1. 아스키 코드 → a ~ z : 97 ~ 122 
+		//2. 		모음 → a : 97 / e : 101 / i : 105 / o : 111 / u : 117
+		
+		Scanner sc = new Scanner(System.in);
+		do
+		{
+			System.out.print("임의의 알파벳 한 문자 입력 (종료『.』): ");
+			
+			String user = sc.next().toLowerCase();
+			
+			//반복문 탈출
+			if (user.equals("."))
+				break;
+			
+			if (user.length() > 1)
+			{
+				System.out.println("한 문자 입력해주세요.");
+			}
+			else
+			{
+			
+				try
+				{
+					byte [] arrB = user.getBytes("US-ASCII");
+					
+					//알파벳이 아니라면
+					if (!(arrB[0] >= 97 && arrB[0]<=122))
+					{
+						System.out.println(">>입력 오류 : 알파벳을 입력해 주세요.");
+						System.out.println("※알파벳 : a ~ z / A ~ Z ");
+					}
+					//모음일 경우
+					else if (arrB[0] == 97 || arrB[0] == 101 || arrB[0] == 105 || arrB[0] == 111 || arrB[0] == 117)
+					{
+						System.out.printf(">>『%s』는 모음입니다.\n",user);
+					}
+					//자음일 경우
+					else
+						System.out.printf(">>『%s』는 자음입니다.\n",user);
+				} catch (Exception e)
+				{
+					System.out.println(e.toString());
+				}
+			}
+			
+		} while (true);
+		System.out.println("프로그램 종료.");
+		
+		
+	}
 }
+//결과출력
+/*
+임의의 알파벳 한 문자 입력 (종료『.』): a
+>>『a』는 모음입니다.
+임의의 알파벳 한 문자 입력 (종료『.』): b
+>>『b』는 자음입니다.
+임의의 알파벳 한 문자 입력 (종료『.』): C
+>>『c』는 자음입니다.
+임의의 알파벳 한 문자 입력 (종료『.』): D
+>>『d』는 자음입니다.
+임의의 알파벳 한 문자 입력 (종료『.』): I
+>>『i』는 모음입니다.
+임의의 알파벳 한 문자 입력 (종료『.』): o
+>>『o』는 모음입니다.
+임의의 알파벳 한 문자 입력 (종료『.』): Iu
+한 문자 입력해주세요.
+임의의 알파벳 한 문자 입력 (종료『.』): .
+프로그램 종료.
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
